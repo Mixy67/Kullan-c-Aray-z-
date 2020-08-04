@@ -1,0 +1,56 @@
+scriptname = "MixyKullanıcıArayüzü";
+scriptversion = "Surum 1.0";
+developer = "Mixy & xNightVishx";
+
+event onLoad(){
+    logger.log("---------------------------------------------------");
+    logger.log(str.format("Script Name: {0}", scriptname));
+    logger.log(str.format("Script Version: {0}", scriptversion ));
+    logger.log(str.format("Developer: {0}", developer));
+    logger.log("---------------------------------------------------");
+}
+event onPlayerJoined(player){
+    effectManager.sendUI(8764, 8764, player.id);
+}
+command uiac(){
+    permission = "mixy.uiac";
+    execute(){
+        if(player.hasPermission("mixy.uiac")){
+            effectManager.sendUI(8764, 8764, player.id);
+            player.message("<color=cyan>" + "Kullanıcı arayüzü aktifleştirildi." + "</color>");
+        }
+        else{
+            player.message("<color=red>" + "Bunu kullanmaya yetkin yok." + "</color>");
+        }
+    }
+}
+command uikapat(){
+    permission = "mixy.uikapat";
+    execute(){
+        if(player.hasPermission("mixy.uikapat")){
+            effectManager.clearUIbyID(8764, player.id);
+            player.message("<color=yellow>" + "Kullanıcı arayüzü pasifleştirildi." + "</color>");
+        }
+        else{
+            player.message("<color=red>" + "Bunu kullanmaya yetkin yok." + "</color>");
+        }
+    }
+}
+event onEffectButtonClicked(player, key){
+    if(key == "Discord"){
+        player.browserRequest("Resmi Discord Sunucumuz!", "https://discord.gg/6DPYRSM"); //Discord sunucunuzun linki.
+    }
+}
+event onEffectButtonClicked(player, key){
+    if(key == "Steam"){
+        player.browserRequest("Kurucu Steam Hesabı!", "https://steamcommunity.com/id/mixyyy"); //Kurucunun steam profil linki.
+    }
+}
+event onEffectButtonClicked(player, key){
+    if(key == "Web"){
+        player.browserRequest("Sunucunun Web Sitesi", "https://www.unturnedturkiye.com/"); //Sunucu websitesi linki.
+    }
+}
+
+//Script by Mixy
+//UI effect by xNightVishx
